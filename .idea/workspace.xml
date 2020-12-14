@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63686869-e345-419b-ad57-ce631babcfd5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1lU58mMuQqGBrf6I3nZUOMkUJyt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/img/maps" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63686869-e345-419b-ad57-ce631babcfd5" name="Default Changelist" comment="" />
+      <created>1607638671165</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607638671165</updated>
+      <workItem from="1607638672223" duration="5217000" />
+      <workItem from="1607696948627" duration="11011000" />
+      <workItem from="1607804469445" duration="27769000" />
+      <workItem from="1607949701250" duration="1316000" />
+      <workItem from="1607976122856" duration="376000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="111" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607724360584">
+      <screen x="0" y="23" width="1440" height="852" />
+    </state>
+    <state x="184" y="111" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.852@0.23.1440.852" timestamp="1607724360584" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607641147636">
+      <screen x="0" y="23" width="1440" height="852" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.852@0.23.1440.852" timestamp="1607641147636" />
+    <state x="100" y="123" width="1240" height="652" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1607807150223">
+      <screen x="0" y="23" width="1440" height="852" />
+    </state>
+    <state x="100" y="123" width="1240" height="652" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.852@0.23.1440.852" timestamp="1607807150223" />
+    <state x="420" y="205" width="600" height="490" key="find.popup" timestamp="1607976390826">
+      <screen x="0" y="23" width="1440" height="852" />
+    </state>
+    <state x="420" y="205" width="600" height="548" key="find.popup/0.23.1440.852/1440.-517.2560.1417@0.23.1440.852" timestamp="1607896421777" />
+    <state x="420" y="205" width="600" height="490" key="find.popup/0.23.1440.852@0.23.1440.852" timestamp="1607976390826" />
+    <state x="383" y="196" width="672" height="678" key="search.everywhere.popup" timestamp="1607868506911">
+      <screen x="0" y="23" width="1440" height="852" />
+    </state>
+    <state x="383" y="196" width="672" height="678" key="search.everywhere.popup/0.23.1440.852@0.23.1440.852" timestamp="1607868506911" />
+  </component>
+</project>

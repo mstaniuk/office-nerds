@@ -1,0 +1,15 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+canvas {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
