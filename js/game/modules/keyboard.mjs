@@ -1,3 +1,5 @@
+import Player from '../classes/Player.mjs';
+
 import {time} from './time.mjs';
 import {isKeyDown} from './input.mjs';
 import {camera, offsetBy as offsetCameraBy} from './camera.mjs';
@@ -22,39 +24,39 @@ export function update() {
 
   switch (true) {
     case (isKeyDown('W') && isKeyDown('A')):
-      core.player.walkDirection = 5 * Math.PI / 4;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = 5 * Math.PI / 4;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('W') && isKeyDown('D')):
-      core.player.walkDirection = 7 * Math.PI / 4;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = 7 * Math.PI / 4;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('S') && isKeyDown('A')):
-      core.player.walkDirection = 3 * Math.PI / 4;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = 3 * Math.PI / 4;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('S') && isKeyDown('D')):
-      core.player.walkDirection = Math.PI / 4;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = Math.PI / 4;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('W')):
-      core.player.walkDirection = 3 * Math.PI / 2;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = 3 * Math.PI / 2;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('S')):
-      core.player.walkDirection = Math.PI / 2;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = Math.PI / 2;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('A')):
-      core.player.walkDirection = Math.PI;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = Math.PI;
+      core.player.velocity = Player.walkingSpeed;
       break;
     case (isKeyDown('D')):
-      core.player.walkDirection = 2 * Math.PI;
-      core.player.speed = core.player.walkingSpeed;
+      core.player.direction = 2 * Math.PI;
+      core.player.velocity = Player.walkingSpeed;
       break;
     default:
-      core.player.speed = 0;
+      core.player.velocity = 0;
   }
 }
 

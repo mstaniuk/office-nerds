@@ -24,7 +24,6 @@ function tick() {
   update();
   render();
 
-
   // temporary this reference
   requestAnimationFrame(() => {
     tick();

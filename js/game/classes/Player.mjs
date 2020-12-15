@@ -1,19 +1,17 @@
 import Sprite from './Sprite.mjs'
-
+import Particle from './Particle.mjs';
 import {mouse} from '../modules/mouse.mjs';
 import {time} from '../modules/time.mjs';
 import {canvas} from '../modules/canvas.mjs';
 import {roundTo} from '../modules/utils.mjs';
 import {centerOn as centerCameraOn} from '../modules/camera.mjs';
 
-export default class Player {
+export default class Player extends Particle {
+  static walkingSpeed = 200;
+
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
+    super(x, y, 0, 16, Math.PI / 2);
     this.pointDirection = Math.PI / 2;
-    this.walkDirection = Math.PI / 2;
-    this.speed = 0;
-    this.walkingSpeed = 200;
     this.sprite = new Sprite(
       'img/panda.png',
       [0, 0],
@@ -59,7 +57,7 @@ export default class Player {
 
     if (this.walking) {
       this.sprite.frames = [1, 2];
-      this.sprite.speed = this.speed / 10 / this.sprite.frames.length;
+      this.sprite.speed = this.velocity / 10 / this.sprite.frames.length;
       yAnim = Math.sin(time.gameTime * 20) * 1.5;
     } else {
       this.sprite.frames = [0];
@@ -93,14 +91,14 @@ export default class Player {
   }
 
   move() {
-    this.walking = this.speed > 0;
+    this.walking = this.velocity > 0;
 
     if (this.walking) {
-      const dx = roundTo(Math.cos(this.walkDirection), 2);
-      this.x = this.x + dx * this.speed * time.dt;
+      const dx = roundTo(Math.cos(this.direction), 2);
+      this.x = this.x + dx * this.velocity * time.dt;
 
-      const dy = roundTo(Math.sin(this.walkDirection), 2);
-      this.y = this.y + dy * this.speed * time.dt;
+      const dy = roundTo(Math.sin(this.direction), 2);
+      this.y = this.y + dy * this.velocity * time.dt;
 
       centerCameraOn(this.x, this.y);
     }
@@ -124,6 +122,7 @@ export default class Player {
       this.drawGun();
     }
     canvas.ctx.restore();
+    this.drawSkeleton();
   }
 
   // Player.prototype.leftClick = function() {
