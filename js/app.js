@@ -76,7 +76,7 @@
       // update mobs
       // this.updateEntities(this.explosions);
       // // update particles
-      // this.updateEntities(this.particles);
+      this.updateEntities(this.particles);
 
       // update player
       this.player.update();
@@ -105,7 +105,7 @@
 
       // Player.draw();
       // this.drawEntities(this.explosions);
-      // this.drawEntities(this.particles);
+      this.drawEntities(this.particles);
       // this.drawEntities(this.shapes);
       this.map.drawForeground();
       ctx.restore();
@@ -142,7 +142,6 @@
      * INITIALIZE GAME
      */
     init: function () {
-
       this.canvas = document.createElement('canvas');
       this.canvas.width = Game.settings.canvas.width;
       this.canvas.height = Game.settings.canvas.height;
@@ -152,6 +151,7 @@
       this.player = new Game.Player(0, 0);
       Game.camera.setOffset(100, 100);
       document.body.appendChild(this.canvas);
+      this.particles.push(new Game.Particle(-50, -50, 25, Math.PI));
 
       this.lastTime = Date.now();
 

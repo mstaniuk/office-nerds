@@ -4,6 +4,8 @@
   function Player(x, y) {
     this.x = x;
     this.y = y;
+    this.direction = Math.PI;
+
     this.pointDirection = Math.PI / 2;
     this.walkDirection = Math.PI / 2;
     this.speed = 0;
