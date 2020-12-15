@@ -1,11 +1,11 @@
 ;(function () {
   'use strict';
-  var Canvas = {
+  var canvas = {
     width: 800,
     height: 512,
   }
 
-  window.Settings = {
-    Canvas: Canvas,
+  window.Game.settings = {
+    canvas: canvas,
   }
 })();

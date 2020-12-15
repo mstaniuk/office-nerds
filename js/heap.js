@@ -107,5 +107,5 @@
     }
   }
 
-  window.Heap = Heap;
+  window.Game.Heap = Heap;
 })();

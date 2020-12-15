@@ -1,34 +1,35 @@
 (function () {
   'use strict';
 
-  var Player = {};
-  Player.x = 0;
-  Player.y = 0;
-  Player.pointDirection = Math.PI / 2;
-  Player.walkDirection = Math.PI / 2;
-  Player.speed = 0;
-  Player.walkingSpeed = 200;
-  Player.sprite = new Sprite(
-    'img/panda.png',
-    [0, 0],
-    [0, 0],
-    [32, 32],
-    0,
-    [1, 2, 3],
-    false
-  );
+  function Player(x, y) {
+    this.x = x;
+    this.y = y;
+    this.pointDirection = Math.PI / 2;
+    this.walkDirection = Math.PI / 2;
+    this.speed = 0;
+    this.walkingSpeed = 200;
+    this.sprite = new Game.Sprite(
+      'img/panda.png',
+      [0, 0],
+      [0, 0],
+      [32, 32],
+      0,
+      [1, 2, 3],
+      false
+    );
+  }
 
-  Player.update = function () {
+  Player.prototype.update = function () {
     this.sprite.update();
     this.updatePointDirection();
     this.move();
   };
 
-  Player.updatePointDirection = function () {
-    Player.pointDirection = Math.atan2(-Mouse.y + this.y, Mouse.x - this.x);
+  Player.prototype.updatePointDirection = function () {
+    this.pointDirection = Math.atan2(-1 * (Game.mouse.y - this.y), Game.mouse.x - this.x);
   }
 
-  Player.drawBody = function (directions) {
+  Player.prototype.drawBody = function (directions) {
     var yAnim = 0;
 
     switch (true) {
@@ -52,62 +53,63 @@
 
     if (this.walking) {
       this.sprite.frames = [1, 2];
-      this.sprite.speed = Player.speed / 10 / this.sprite.frames.length;
-      yAnim = Math.sin(Game.gameTime * 20) * 1.5;
+      this.sprite.speed = this.speed / 10 / this.sprite.frames.length;
+      yAnim = Math.sin(Game.core.gameTime * 20) * 1.5;
     } else {
       this.sprite.frames = [0];
     }
 
-    Game.ctx.save();
-    Game.ctx.translate(-this.sprite.size[0] / 2, -this.sprite.size[1] / 2 + yAnim);
+    Game.core.ctx.save();
+    Game.core.ctx.translate(-this.sprite.size[0] / 2, -this.sprite.size[1] / 2 + yAnim);
     this.sprite.draw();
-    Game.ctx.restore();
+    Game.core.ctx.restore();
 
   }
 
-  Player.drawGun = function () {
-    Game.ctx.save();
-    Game.ctx.beginPath();
-    Game.ctx.rotate(-this.pointDirection);
-    Game.ctx.moveTo(5, 0);
-    Game.ctx.lineTo(20, 0);
-    Game.ctx.lineWidth = 4;
-    Game.ctx.strokeStyle = '#00022e';
-    Game.ctx.stroke();
-    Game.ctx.closePath()
-    Game.ctx.beginPath();
-    Game.ctx.moveTo(20, -1);
-    Game.ctx.lineTo(23, -1);
-    Game.ctx.lineWidth = 2;
-    Game.ctx.strokeStyle = 'orange';
-    Game.ctx.stroke();
-    Game.ctx.closePath()
-    Game.ctx.restore();
+  Player.prototype.drawGun = function () {
+    Game.core.ctx.save();
+    Game.core.ctx.beginPath();
+    Game.core.ctx.rotate(-this.pointDirection);
+    Game.core.ctx.moveTo(5, 0);
+    Game.core.ctx.lineTo(20, 0);
+    Game.core.ctx.lineWidth = 4;
+    Game.core.ctx.strokeStyle = '#00022e';
+    Game.core.ctx.stroke();
+    Game.core.ctx.closePath()
+    Game.core.ctx.beginPath();
+    Game.core.ctx.moveTo(20, -1);
+    Game.core.ctx.lineTo(23, -1);
+    Game.core.ctx.lineWidth = 2;
+    Game.core.ctx.strokeStyle = 'orange';
+    Game.core.ctx.stroke();
+    Game.core.ctx.closePath()
+    Game.core.ctx.restore();
   }
 
-  Player.move = function () {
-    this.walking = Player.speed > 0;
+  Player.prototype.move = function () {
+    this.walking = this.speed > 0;
 
     if (this.walking) {
-      const vy = Math.round(Math.sin(this.walkDirection) * -1 * 100) / 100;
-      const vx = Math.round(Math.cos(this.walkDirection) * 100) / 100;
-      this.x = this.x + vx * Player.speed * Game.dt;
-      this.y = this.y + vy * Player.speed * Game.dt;
+      const dx = Game.utils.roundTo(Math.cos(this.walkDirection), 2);
+      this.x = this.x + dx * this.speed * Game.core.dt;
 
-      Camera.centerOn(this.x, this.y);
+      const dy = Game.utils.roundTo(Math.sin(this.walkDirection), 2);
+      this.y = this.y + dy * this.speed * Game.core.dt;
+
+      Game.camera.centerOn(this.x, this.y);
     }
   }
 
-  Player.draw = function () {
+  Player.prototype.draw = function () {
     const directions = {
-      n: Player.pointDirection >= Math.PI / 4 && Player.pointDirection < 3 * Math.PI / 4,
-      w: (Player.pointDirection >= 3 * Math.PI / 4 && Player.pointDirection < Math.PI) || (Player.pointDirection >= -Math.PI && Player.pointDirection < -3 * Math.PI / 4),
-      s: Player.pointDirection >= -3 * Math.PI / 4 && Player.pointDirection < -Math.PI / 4,
-      e: (Player.pointDirection >= -Math.PI / 4 && Player.pointDirection < -0) || (Player.pointDirection >= 0 && Player.pointDirection < Math.PI / 4)
+      n: this.pointDirection >= Math.PI / 4 && this.pointDirection < 3 * Math.PI / 4,
+      w: (this.pointDirection >= 3 * Math.PI / 4 && this.pointDirection < Math.PI) || (this.pointDirection >= -Math.PI && this.pointDirection < -3 * Math.PI / 4),
+      s: this.pointDirection >= -3 * Math.PI / 4 && this.pointDirection < -Math.PI / 4,
+      e: (this.pointDirection >= -Math.PI / 4 && this.pointDirection < -0) || (this.pointDirection >= 0 && this.pointDirection < Math.PI / 4)
     }
     // draw sprite
-    Game.ctx.save();
-    Game.ctx.translate(this.x, this.y);
+    Game.core.ctx.save();
+    Game.core.ctx.translate(this.x, this.y);
     if (directions.n || directions.w) {
       this.drawGun();
       this.drawBody(directions);
@@ -115,12 +117,12 @@
       this.drawBody(directions);
       this.drawGun();
     }
-    Game.ctx.restore();
+    Game.core.ctx.restore();
   }
 
-  Player.leftClick = function() {
-    Game.particles.push(new Nerf(this.x, this.y, this.pointDirection))
-  }
+  // Player.prototype.leftClick = function() {
+  //   Game.particles.push(new Nerf(this.x, this.y, this.pointDirection))
+  // }
 
-  window.Player = Player;
+  window.Game.Player = Player;
 })();

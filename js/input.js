@@ -41,8 +41,8 @@
       return pressedKeys[key.toUpperCase()];
     }
 
-    window.input = {
+    window.Game.input = {
       isDown: isDown
     }
-    
+
 })();

@@ -1,44 +1,49 @@
-'use strict';
-var Mouse = {};
-Mouse.rawX = 0;
-Mouse.rawY = 0;
-Mouse.x = 0;
-Mouse.y = 0;
-
-Mouse.updatePos = function (e) {
-  if(Game.canvas) {
-    var rect = Game.canvas.getBoundingClientRect();
-    Mouse.rawX = Math.floor(e.clientX - rect.left);
-    Mouse.rawY = Math.floor(e.clientY - rect.top);
+;(function () {
+  'use strict';
+  var mouse = {
+    rawX: 0,
+    rawY: 0,
+    x: 0,
+    y: 0,
   }
-};
 
-Mouse.update = function () {
-  Mouse.x = Mouse.rawX + Camera.oX;
-  Mouse.y = Mouse.rawY + Camera.oY;
-}
 
-Mouse.onLeftClick = function () {
-  console.log('left click')
-  Game.tempPolygon.addEdge(Mouse.x, Mouse.y);
-  Player.leftClick();
-}
+  mouse.updatePos = function updatePos(e) {
+    if (Game.core.canvas) {
+      var rect = Game.core.canvas.getBoundingClientRect();
+      mouse.rawX = Math.floor(e.clientX - rect.left);
+      mouse.rawY = Math.floor(e.clientY - rect.top);
+    }
+  }
 
-Mouse.onRightClick = function () {
-  console.log('Right click')
-}
-// mouse events
-window.addEventListener('mousemove', function (e) {
-  Mouse.updatePos(e);
-}, false);
+  mouse.update = function update() {
+    mouse.x = mouse.rawX + Game.camera.oX;
+    mouse.y = mouse.rawY + Game.camera.oY;
+  }
 
-window.addEventListener('click', function (e) {
-  Mouse.updatePos(e);
-  Mouse.onLeftClick();
-}, false);
+  mouse.onLeftClick = function onLeftClick() {
+    console.log('left click')
+  }
 
-window.addEventListener('contextmenu', function (e) {
-  e.preventDefault();
-  Mouse.updatePos(e);
-  Mouse.onRightClick();
-}, false);
+  mouse.onRightClick = function onRightClick() {
+    console.log('Right click')
+  }
+
+
+  window.addEventListener('mousemove', function (e) {
+    mouse.updatePos(e);
+  }, false);
+
+  window.addEventListener('click', function (e) {
+    mouse.updatePos(e);
+    mouse.onLeftClick();
+  }, false);
+
+  window.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    mouse.updatePos(e);
+    mouse.onRightClick();
+  }, false);
+
+  window.Game.mouse = mouse;
+})()

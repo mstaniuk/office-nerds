@@ -14,7 +14,7 @@
   }
 
   Sprite.prototype.update = function () {
-    this.i += this.speed * Game.dt;
+    this.i += this.speed * Game.core.dt;
   }
 
   Sprite.prototype.draw = function () {
@@ -34,8 +34,8 @@
     var sx = this.pos[0] + (frame * this.size[0]);
     var sy = this.pos[1];
     // Game.ctx.strokeRect(this.pxy[0], this.pxy[1], this.size[0], this.size[1])
-    Game.ctx.drawImage(resources.get(this.url), sx, sy, this.size[0], this.size[1], this.pxy[0], this.pxy[1], this.size[0], this.size[1]);
+    Game.core.ctx.drawImage(Game.resources.get(this.url), sx, sy, this.size[0], this.size[1], this.pxy[0], this.pxy[1], this.size[0], this.size[1]);
   }
 
-  window.Sprite = Sprite;
+  window.Game.Sprite = Sprite;
 })();

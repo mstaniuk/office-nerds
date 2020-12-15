@@ -6,7 +6,7 @@
     };
   })(window);
 
-  window.Game = {
+  window.Game.core = {
     //timestamps
     lastTime: null,
     gameTime: null,
@@ -19,6 +19,7 @@
     map: null,
 
     // Objects
+    player: null,
     mobs: [],
     explosions: [],
     teleports: [],
@@ -69,16 +70,16 @@
       // Update dame time
       this.gameTime += this.dt;
       // update mouse position
-      Mouse.update();
+      Game.mouse.update();
       // handle keyboard input
-      Keyboard.handleInput();
+      Game.keyboard.update();
       // update mobs
-      this.updateEntities(this.explosions);
-      // update particles
-      this.updateEntities(this.particles);
+      // this.updateEntities(this.explosions);
+      // // update particles
+      // this.updateEntities(this.particles);
 
       // update player
-      Player.update();
+      this.player.update();
     },
 
 
@@ -96,12 +97,16 @@
       this.map.drawBackground();
 
       ctx.save();
-      ctx.translate(-Camera.oX, -Camera.oY);
+      ctx.translate(-Game.camera.oX, -Game.camera.oY);
 
-      Player.draw();
-      this.drawEntities(this.explosions);
-      this.drawEntities(this.particles);
-      this.drawEntities(this.shapes);
+      ctx.save();
+        this.player.draw();
+      ctx.restore();
+
+      // Player.draw();
+      // this.drawEntities(this.explosions);
+      // this.drawEntities(this.particles);
+      // this.drawEntities(this.shapes);
       this.map.drawForeground();
       ctx.restore();
 
@@ -110,13 +115,19 @@
       this.drawEntities(this.hud);
 
       // TEMP: Debug console
-      this.ctx.font = '15px Arial';
-      this.ctx.fillStyle = '#ff0000';
-      this.ctx.fillText('Time: ' + Utils.roundTo(this.gameTime, 2), 5, 20);
-      this.ctx.fillText('FPS: ' + (1 / this.dt) , 5, 40);
-      this.ctx.fillText('Player X: ' + Player.x.toFixed(2) + '; Player Y: ' + Player.y.toFixed(2) + '; Direction: ' + (Player.walkDirection.toFixed(2)) + '(' + Player.walkDirection * 180 / Math.PI + ' deg)', 5, 60);
-      this.ctx.fillText('Point direction: ' + Player.pointDirection.toFixed(2) + ' (' + (Player.pointDirection * (180 / Math.PI)).toFixed(2) + ' deg)', 5, 80);
-      this.ctx.fillText('Mouse X: ' + Mouse.x.toFixed(2) + '; Mouse Y: ' + Mouse.y.toFixed(2), 5, 100);
+      ctx.save();
+      ctx.globalAlpha = 0.75;
+      ctx.fillStyle = '#222222';
+      ctx.fillRect(0, 0, 300, 110);
+      ctx.restore();
+
+      ctx.font = '15px Arial';
+      ctx.fillStyle = '#f1f1f1';
+      ctx.fillText('Time: ' + Game.utils.roundTo(this.gameTime, 2) + '; FPS: ' + Game.utils.roundTo(1 / this.dt, 0), 5, 20);
+      ctx.fillText('Mouse X: ' + Game.mouse.x.toFixed(2) + '; Mouse Y: ' + Game.mouse.y.toFixed(2), 5, 40);
+      ctx.fillText('Mouse raw X: ' + Game.mouse.rawX.toFixed(2) + '; Mouse raw Y: ' + Game.mouse.rawY.toFixed(2), 5, 60);
+      ctx.fillText('Camera oX: ' + Game.camera.oX.toFixed(2) + '; Camera oY: ' + Game.camera.oY.toFixed(2), 5, 80);
+      ctx.fillText('Player X: ' + Game.core.player.x.toFixed(2) + '; Player Y: ' + Game.core.player.y.toFixed(2), 5, 100);
       //END TEMP
 
     },
@@ -133,16 +144,13 @@
     init: function () {
 
       this.canvas = document.createElement('canvas');
-      this.canvas.width = Settings.Canvas.width;
-      this.canvas.height = Settings.Canvas.height;
+      this.canvas.width = Game.settings.canvas.width;
+      this.canvas.height = Game.settings.canvas.height;
 
       this.ctx = this.canvas.getContext('2d');
       this.map = new GameMap();
-
-      this.tempPolygon = new Polygon();
-      this.shapes.push(this.tempPolygon);
-
-      Camera.centerOn(Player.x, Player.y);
+      this.player = new Game.Player(0, 0);
+      Game.camera.setOffset(100, 100);
       document.body.appendChild(this.canvas);
 
       this.lastTime = Date.now();
@@ -155,21 +163,19 @@
 /*
  * RESOURCES
  */
-resources.load([
-  'img/player.png',
+Game.resources.load([
   'img/panda.png',
   'img/nerf.png',
   'img/hit.png',
-  'img/hit1.png',
-  'img/maps/zebMap.png',
-  'img/maps/cave1l0.png',
-  'img/maps/cave1l1.png'
+  'img/stars.png',
+  'img/map.png',
+  'img/explosion.png',
 ]);
 
 
 document.addEventListener('DOMContentLoaded', function (e) {
-  resources.onReady(function () {
-    Game.init();
+  Game.resources.onReady(function () {
+    Game.core.init();
   });
 });
 

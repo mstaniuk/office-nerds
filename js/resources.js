@@ -1,11 +1,12 @@
 ;(function () {
   'use strict';
-  var resourceCache = {};
-  var loading = [];
-  var readyCallbacks = [];
+  var resources = {
+    resourceCache: {},
+    readyCallbacks: [],
+  }
 
   // Load an image url or an array of image urls
-  function load(urlOrArr) {
+  resources.load = function load(urlOrArr) {
     if (urlOrArr instanceof Array) {
       urlOrArr.forEach(function (url) {
         _load(url);
@@ -16,47 +17,40 @@
   }
 
   function _load(url) {
-    if (resourceCache[url]) {
-      return resourceCache[url];
-    } else {
-      var img = new Image();
-      img.onload = function () {
-        resourceCache[url] = img;
-
-        if (isReady()) {
-          readyCallbacks.forEach(function (func) {
-            func();
-          });
-        }
-      };
-      resourceCache[url] = false;
-      img.src = url;
+    if (resources.resourceCache[url]) {
+      return resources.resourceCache[url];
     }
+
+    var img = new Image();
+    img.onload = function () {
+      resources.resourceCache[url] = img;
+      if (resources.isReady()) {
+        resources.readyCallbacks.forEach(function (func) {
+          func();
+        });
+      }
+    };
+    resources.resourceCache[url] = false;
+    img.src = url;
   }
 
-  function get(url) {
-    return resourceCache[url];
+  resources.get = function get(url) {
+    return resources.resourceCache[url];
   }
 
-  function isReady() {
+  resources.isReady = function isReady() {
     var ready = true;
-    for (var k in resourceCache) {
-      if (resourceCache.hasOwnProperty(k) &&
-        !resourceCache[k]) {
+    for (var k of Object.keys(resources.resourceCache)) {
+      if (!resources.resourceCache[k]) {
         ready = false;
       }
     }
     return ready;
   }
 
-  function onReady(func) {
-    readyCallbacks.push(func);
+  resources.onReady =function onReady(func) {
+    resources.readyCallbacks.push(func);
   }
 
-  window.resources = {
-    load: load,
-    get: get,
-    onReady: onReady,
-    isReady: isReady
-  };
+  window.Game.resources = resources;
 })();
