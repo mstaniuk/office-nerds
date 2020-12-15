@@ -2,42 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63686869-e345-419b-ad57-ce631babcfd5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/game/modules/resources.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/exp2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/explosion1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/explosion2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/explosion3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/hit1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/big1l0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/big1l1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/cave1l0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/cave1l1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/cave2l0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/cave2l1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/house1l0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/maps/zebMap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/player.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/player1.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/camera.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/gameMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/gameMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/heap.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/heap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/helpers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/input.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/keyboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/keyboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/mob.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/mouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/nerf.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/nerf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/polygon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/resources.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/resources.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/sprite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/textAnim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/camera.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/gameMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/input.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/keyboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/mouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/game/modules/mouse.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/player.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/resources.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/settings.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/sprite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,17 +34,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js/game/classes" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js/game/classes" />
+      <recent name="$PROJECT_DIR$/js/game/modules" />
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js/game/modules" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/img/maps" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -94,10 +75,10 @@
       <screen x="0" y="23" width="1440" height="852" />
     </state>
     <state x="184" y="111" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.852@0.23.1440.852" timestamp="1607724360584" />
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607977266469">
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608072344306">
       <screen x="0" y="23" width="1440" height="852" />
     </state>
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.852@0.23.1440.852" timestamp="1607977266469" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.852@0.23.1440.852" timestamp="1608072344306" />
     <state x="100" y="123" width="1240" height="652" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1607807150223">
       <screen x="0" y="23" width="1440" height="852" />
     </state>
@@ -106,11 +87,11 @@
       <screen x="0" y="23" width="1440" height="852" />
     </state>
     <state x="452" y="66" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.852/1440.-517.2560.1417@0.23.1440.852" timestamp="1608059926757" />
-    <state x="420" y="205" width="600" height="548" key="find.popup" timestamp="1608059843996">
+    <state x="420" y="205" width="600" height="548" key="find.popup" timestamp="1608072844440">
       <screen x="0" y="23" width="1440" height="852" />
     </state>
     <state x="420" y="205" width="600" height="548" key="find.popup/0.23.1440.852/1440.-517.2560.1417@0.23.1440.852" timestamp="1608059843996" />
-    <state x="420" y="205" width="600" height="548" key="find.popup/0.23.1440.852@0.23.1440.852" timestamp="1607979278992" />
+    <state x="420" y="205" width="600" height="548" key="find.popup/0.23.1440.852@0.23.1440.852" timestamp="1608072844440" />
     <state x="383" y="196" width="672" height="678" key="search.everywhere.popup" timestamp="1607979965373">
       <screen x="0" y="23" width="1440" height="852" />
     </state>
