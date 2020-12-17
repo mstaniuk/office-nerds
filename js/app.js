@@ -8,6 +8,9 @@ loadResources([
   'img/hit.png',
   'img/stars.png',
   'img/map.png',
+  'img/office.png',
+  'img/office_fg.png',
+  'img/player.png',
   'img/explosion.png',
 ]);
 

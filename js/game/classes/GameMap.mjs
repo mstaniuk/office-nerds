@@ -4,7 +4,8 @@ import {camera} from '../modules/camera.mjs';
 
 export default class GameMap {
   constructor() {
-    this.backgroundResource = getResource('img/map.png');
+    this.backgroundResource = getResource('img/office.png');
+    this.foregroundResource = getResource('img/office_fg.png');
   }
 
   drawBackground = function () {
@@ -23,20 +24,19 @@ export default class GameMap {
   }
 
   drawForeground = function () {
-    // this.wall.draw();
-    // Game.ctx.save();
-    // Game.ctx.globalAlpha = 0.5;
-    // Game.ctx.drawImage(
-    //   this.foregroundResource,
-    //   Camera.oX,
-    //   Camera.oY,
-    //   Game.canvas.width,
-    //   Game.canvas.height,
-    //   0,
-    //   0,
-    //   Game.canvas.width,
-    //   Game.canvas.height
-    // );
-    // Game.ctx.restore();
+    canvas.ctx.save();
+    canvas.ctx.globalAlpha = 0.5;
+    canvas.ctx.drawImage(
+      this.foregroundResource,
+      camera.oX,
+      camera.oY,
+      canvas.width,
+      canvas.height,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+    canvas.ctx.restore();
   }
 }

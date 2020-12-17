@@ -1,5 +1,6 @@
 import {canvas} from './canvas.mjs';
 import {camera} from './camera.mjs';
+import {core} from './core.mjs';
 
 export const mouse = {
   rawX: 0,
@@ -23,11 +24,11 @@ export function update() {
 }
 
 function leftClickHandler() {
-  console.log('left click')
+  core.player.shoot();
 }
 
 function rightClickHandler() {
-  console.log('Right click')
+  console.log('Right click');
 }
 
 

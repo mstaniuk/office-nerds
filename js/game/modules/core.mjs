@@ -67,8 +67,8 @@ function render() {
   // this.drawEntities(this.explosions);
   drawEntities(core.particles);
   // this.drawEntities(this.shapes);
-  core.map.drawForeground();
   canvas.ctx.restore();
+  core.map.drawForeground();
 
   // TEMP: Debug console
   canvas.ctx.save();
