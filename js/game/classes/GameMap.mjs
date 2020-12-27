@@ -25,7 +25,7 @@ export default class GameMap {
 
   drawForeground = function () {
     canvas.ctx.save();
-    canvas.ctx.globalAlpha = 0.5;
+    // canvas.ctx.globalAlpha = 0.25;
     canvas.ctx.drawImage(
       this.foregroundResource,
       camera.oX,

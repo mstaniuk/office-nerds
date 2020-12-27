@@ -20,10 +20,10 @@ export default class Sprite {
   }
 
   draw() {
-    let frame = 0;
+    const max = this.frames.length;
+    let frame = max === 1 ? this.frames[0] : 0;
 
-    if (this.speed > 0 && this.frames.length > 1) {
-      const max = this.frames.length;
+    if (this.speed > 0 && max > 1) {
       const idx = Math.floor(this.i);
       frame = this.frames[idx % max];
 
@@ -35,7 +35,8 @@ export default class Sprite {
 
     const sx = this.pos[0] + (frame * this.size[0]);
     const sy = this.pos[1];
-    // Game.ctx.strokeRect(this.pxy[0], this.pxy[1], this.size[0], this.size[1])
+
+    // canvas.ctx.strokeRect(this.pxy[0], this.pxy[1], this.size[0], this.size[1])
     canvas.ctx.drawImage(getResource(this.url), sx, sy, this.size[0], this.size[1], this.pxy[0], this.pxy[1], this.size[0], this.size[1]);
   }
 }

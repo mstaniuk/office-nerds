@@ -1,17 +1,19 @@
 import Sprite from './Sprite.mjs'
 import Particle from './Particle.mjs';
 import Nerf from './Nerf.mjs';
+
 import {mouse} from '../modules/mouse.mjs';
 import {time} from '../modules/time.mjs';
 import {canvas} from '../modules/canvas.mjs';
 import {centerOn as centerCameraOn} from '../modules/camera.mjs';
 import {core} from '../modules/core.mjs';
+import {circleRectangleCollision, roundTo} from '../modules/utils.mjs';
 
 export default class Player extends Particle {
-  static walkingSpeed = 200;
+  static walkingSpeed = 300;
 
   constructor(x, y) {
-    super(x, y, 0, 16, Math.PI / 2);
+    super(x, y, 0, 12, Math.PI / 2);
     this.pointDirection = Math.PI / 2;
     this.sprite = new Sprite(
       'img/player.png',
@@ -57,18 +59,18 @@ export default class Player extends Particle {
     }
 
     if (this.walking) {
-      this.sprite.frames = [0,1,2,1];
-      this.sprite.speed = this.velocity / 5 / this.sprite.frames.length;
+      this.sprite.frames = [0, 1, 2, 1];
       yAnim = Math.sin(time.gameTime * 20) * 1.5;
     } else {
       this.sprite.frames = [1];
     }
 
+    this.sprite.speed = this.velocity / 5 / this.sprite.frames.length;
+
     canvas.ctx.save();
     canvas.ctx.translate(-this.sprite.size[0] / 2, -this.sprite.size[1] / 2 + yAnim);
     this.sprite.draw();
     canvas.ctx.restore();
-
   }
 
   drawGun() {
@@ -81,6 +83,7 @@ export default class Player extends Particle {
     canvas.ctx.strokeStyle = '#00022e';
     canvas.ctx.stroke();
     canvas.ctx.closePath()
+
     canvas.ctx.beginPath();
     canvas.ctx.moveTo(13, -1);
     canvas.ctx.lineTo(16, -1);
@@ -91,15 +94,41 @@ export default class Player extends Particle {
     canvas.ctx.restore();
   }
 
+
   move() {
     this.walking = this.velocity > 0;
 
     if (this.walking) {
       const dx = Math.cos(this.direction);
-      this.x = Math.round(this.x + dx * this.velocity * time.dt, 2);
-
       const dy = Math.sin(this.direction);
-      this.y = Math.round(this.y + dy * this.velocity * time.dt, 2);
+
+      let newX = roundTo(this.x + (dx) * this.velocity * time.dt, 2);
+      let newY = roundTo(this.y + (dy) * this.velocity * time.dt, 2);
+
+      const collisionPoints = core.shapes
+      .map(shape => circleRectangleCollision(newX, newY, this.radius, shape.x, shape.y, shape.width, shape.height))
+      .filter(result => result !== false)
+
+      if (collisionPoints.length > 0) {
+        for (let i = 0; i < collisionPoints.length; i++) {
+          const collisionPoint = collisionPoints[i];
+          const normalizedCollisionPoint = [collisionPoint[0] - this.x, collisionPoint[1] - this.y];
+          const collisionDirection = Math.atan2(normalizedCollisionPoint[1], normalizedCollisionPoint[0]);
+          const cdx = roundTo(Math.cos(collisionDirection), 0);
+          const cdy = roundTo(Math.sin(collisionDirection), 0);
+
+          if (cdx !== 0) {
+            newX = roundTo(collisionPoint[0] - this.radius * Math.sign(cdx), 2);
+          }
+          if (cdy !== 0) {
+            newY = roundTo(collisionPoint[1] - this.radius * Math.sign(cdy), 2);
+          }
+        }
+      }
+
+      this.x = newX;
+      this.y = newY;
+
 
       centerCameraOn(this.x, this.y);
     }
