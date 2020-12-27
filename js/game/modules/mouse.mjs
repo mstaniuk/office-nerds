@@ -1,9 +1,6 @@
 import {canvas} from './canvas.mjs';
 import {camera} from './camera.mjs';
 import {core} from './core.mjs';
-import Rectangle from '../classes/Rectangle.mjs';
-let i = 0;
-let rect = null;
 
 export const mouse = {
   rawX: 0,
